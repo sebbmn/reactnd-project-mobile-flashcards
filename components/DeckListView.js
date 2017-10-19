@@ -1,24 +1,14 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import DeckView from './DeckView'
-import AddDeckView from './AddDeckView'
-import { TabNavigator } from 'react-navigation'
-
-const Tabs = TabNavigator({
-  Deck_View: {
-    screen: DeckView
-  },
-  Add_deck: {
-    screen: AddDeckView
-  },
-})
+import { Text, View, Button } from 'react-native'
 
 export default class DeckListView extends Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <Tabs />
-        <Text>ahhhhhhhhhhhhhhhhhhhhhhhhhhhhh</Text>
+      <View>
+        <Button
+          onPress={() => this.props.navigation.navigate('DeckView', {deckName: 'test'})}
+          title="Deck"
+        />
       </View>
     )
   }

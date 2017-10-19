@@ -1,38 +1,29 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 import DeckListView from './components/DeckListView'
-import { StackNavigator } from 'react-navigation'
+import AddCardView from './components/AddCardView'
+import AddDeckView from './components/AddDeckView'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 
-const Stack = StackNavigator({
-  DeckView: {
-    screen: DeckView
-  },
-  QuizView: {
-    screen: QuizView
-  }
+const MainTabNavigator = TabNavigator({
+  Home: { screen: DeckListView },
+  NewDeck: { screen: AddDeckView },
+})
+const AppNavigator = StackNavigator({
+  Home: { screen: MainTabNavigator },
+  AddDeckView: { screen: AddDeckView },
+  AddCardView: { screen: AddCardView },
+  DeckView: { screen: DeckView },
+  QuizView: { screen: QuizView },
 })
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Project Mobile Flashcards</Text>
-        <DeckListView/>
-        <TouchableOpacity>
-          <Text>Press here for the Dashboard</Text>
-        </TouchableOpacity>
-      </View>
+      <AppNavigator/>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
