@@ -5,6 +5,7 @@ import AddCardView from './components/AddCardView'
 import AddDeckView from './components/AddDeckView'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
+import QuizResult from './components/QuizResult'
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -39,6 +40,9 @@ const AppNavigator = StackNavigator({
   },
   QuizView: { 
     screen: QuizView 
+  },
+  QuizResult: {
+    screen: QuizResult
   }
 },
 {
