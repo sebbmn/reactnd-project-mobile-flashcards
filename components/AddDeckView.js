@@ -13,23 +13,21 @@ export default class AddDeckView extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior='padding'>
         <Text style={styles.title}>
           What is the title of your new deck?
         </Text>
-        <View>
           <TextInput
             value={this.state.deckTitle}
             onChangeText={(text) => this.setState({deckTitle:text})}
             style={styles.textinput}
           />
-        </View>
-        <View style={{alignSelf: 'center'}}>
           <TouchableOpacity onPress={this.submit}>
             <Text style={styles.buttonSubmit}>Submit</Text>
           </TouchableOpacity>
+        <View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -37,10 +35,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-around',
-    margin: 40,
+    margin: 30,
   },
   title: {
-    fontSize: 40,
+    fontSize: 35,
     textAlign: 'center'
   },
   textinput: {
@@ -52,7 +50,7 @@ const styles = StyleSheet.create({
   buttonSubmit: {
     backgroundColor: '#000000',
     color: '#ffffff',
-    justifyContent:'center',
+    alignSelf:'center',
     width: 150,
     height: 50,
     borderRadius: 5,

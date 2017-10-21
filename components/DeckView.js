@@ -20,7 +20,7 @@ export default class DeckView extends Component {
       <View style={styles.container}>
           <View>     
             <Text style={styles.title}>
-              {params.deckName}
+              {params.deckName} cards
             </Text>
             <Text style={styles.number}>
               {params.deckId}
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     margin: 60,
   },
   title: {
-    fontSize: 40,
+    fontSize: 35,
     textAlign: 'center'
   },
   number: {
