@@ -1,20 +1,39 @@
 import React, { Component } from 'react'
-import { Text, View, Button, TouchableOpacity, StyleSheet, SectionList } from 'react-native'
+import { Text, View, Button, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 
 export default class DeckListView extends Component {
+  state = {
+    decks: [
+      {
+        title: 'React',
+      },
+      {
+        title:'Javascript'
+      },
+      {
+        title: 'Blavla'
+      }
+    ]
+  }
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: 'New Deck I', deckId:'12345'})}>
-          <Text style={styles.button}>New Deck I</Text>
-        </TouchableOpacity>
+        <FlatList
+        data={this.state.decks}
+        keyExtractor={item => item.title}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title, deckId:'12345'})}>
+            <Text style={styles.button}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#000000',
+    backgroundColor: '#abc678',
     color: '#ffffff',
     textAlign: 'center',
     padding: 10,

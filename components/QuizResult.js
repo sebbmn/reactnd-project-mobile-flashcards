@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default class QuizView extends Component {
+export default class QuizResult extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Results',
     headerStyle: {
