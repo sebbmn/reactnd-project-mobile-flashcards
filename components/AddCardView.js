@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addCard } from '../actions'
 import { Text, View, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default class AddCardView extends Component {
+class AddCardView extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Add Card',
     headerStyle: {
@@ -14,9 +16,7 @@ export default class AddCardView extends Component {
     inputAnswer: ''
   }
   submit = () => {
-    // TODO instead of alert, add question to the store/storage
-    alert(`Question: ${this.state.inputQuestion} Answer: ${this.state.inputAnswer}`)
-    this.setState({deckTitle:''})
+    this.props.addC({deckName:this.props.navigation.state.params.deckName, question:this.state.inputQuestion, answer:this.state.inputAnswer})
     this.props.navigation.navigate('Home')
   }
   render() {
@@ -76,3 +76,12 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
+function mapDispatchToProps (dispatch) {
+  return { 
+    addC: (data) => dispatch(addCard(data))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddCardView)
