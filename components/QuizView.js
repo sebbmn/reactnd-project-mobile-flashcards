@@ -42,23 +42,23 @@ class QuizView extends Component {
     const { params } = this.props.navigation.state
     const { deckList } = this.props
 
-    questions = deckList[params.deckName].questions
+    questions = deckList[params.deckName] && deckList[params.deckName].questions
 
     return (
       <View style={styles.container}>
-        <Text>{this.state.index+1}/{questions.length}</Text>
+        <Text>{this.state.index+1}/{questions && questions.length}</Text>
         <TouchableOpacity onPress={this.setMode}>
           {this.state.displayAnswer ? (
               <View>
                 <Text style={styles.title}>
-                  {questions[this.state.index].answer}
+                  {questions && questions[this.state.index].answer}
                 </Text>
                 <Text style={{color: 'red', alignSelf: 'center'}}>Question</Text>
               </View>
             ):(
               <View>
                 <Text style={styles.title}>
-                  {questions[this.state.index].question}
+                  {questions && questions[this.state.index].question}
                 </Text>
                 <Text style={{color: 'red', alignSelf: 'center'}}>Answer</Text>
               </View>

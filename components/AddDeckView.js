@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addDeck } from '../actions'
 import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 
-export default class AddDeckView extends Component {
+class AddDeckView extends Component {
   state = {
     deckTitle: ''
   }
   submit = () => {
-    // TODO instead of alert, add deck to the store/storage
-    alert(this.state.deckTitle)
-    this.setState({deckTitle:''})
-    this.props.navigation.navigate('Home')
+    if(this.state.deckTitle !== '') {
+      this.props.addD(this.state.deckTitle)
+      this.setState({deckTitle:''})
+      this.props.navigation.navigate('Home')
+    } else {
+      alert('Your deck need a name')
+    }
+
   }
   render() {
     return (
@@ -60,3 +66,12 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
+function mapDispatchToProps (dispatch) {
+  return { 
+    addD: (data) => dispatch(addDeck(data))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddDeckView)

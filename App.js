@@ -50,7 +50,7 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: {
-    title: 'Mobile Flaashcards',
+    title: 'Mobile Flashcards',
     headerStyle: {
       backgroundColor: '#000000'
     },
