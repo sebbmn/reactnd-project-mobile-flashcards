@@ -1,4 +1,7 @@
 import React from 'react'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import DeckListView from './components/DeckListView'
 import AddCardView from './components/AddCardView'
@@ -47,7 +50,7 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: {
-    title: 'Mobile Flashcards',
+    title: 'Mobile Flaashcards',
     headerStyle: {
       backgroundColor: '#000000'
     },
@@ -58,7 +61,9 @@ const AppNavigator = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <AppNavigator/>
+      <Provider store={createStore(reducer)}>
+        <AppNavigator/>
+      </Provider>
     )
   }
 }

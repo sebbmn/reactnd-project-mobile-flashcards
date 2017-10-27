@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Text, View, Button, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 
-export default class DeckListView extends Component {
+class DeckListView extends Component {
   state = {
     decks: [
       {
@@ -16,6 +17,7 @@ export default class DeckListView extends Component {
     ]
   }
   render() {
+    const {deckList} = this.props
     return (
       <View>
         <FlatList
@@ -27,16 +29,23 @@ export default class DeckListView extends Component {
           </TouchableOpacity>
         )}
       />
+      <Text>{deckList.React.title}</Text>
       </View>
     )
   }
 }
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#abc678',
+    backgroundColor: '#0000aa',
     color: '#ffffff',
     textAlign: 'center',
     padding: 10,
     margin: 10
   },
 })
+function mapStateToProps (state) {
+  return {deckList: state}
+}
+export default connect(
+  mapStateToProps
+)(DeckListView)
