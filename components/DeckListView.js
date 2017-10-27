@@ -3,33 +3,21 @@ import { connect } from 'react-redux'
 import { Text, View, Button, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
 
 class DeckListView extends Component {
-  state = {
-    decks: [
-      {
-        title: 'React',
-      },
-      {
-        title:'Javascript'
-      },
-      {
-        title: 'Blavla'
-      }
-    ]
-  }
   render() {
     const {deckList} = this.props
+    let decks = Object.keys(deckList).map(e=>({title: e}))
+
     return (
       <View>
         <FlatList
-        data={this.state.decks}
+        data={decks}
         keyExtractor={item => item.title}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title, deckId:'12345'})}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
             <Text style={styles.button}>{item.title}</Text>
           </TouchableOpacity>
         )}
       />
-      <Text>{deckList.React.title}</Text>
       </View>
     )
   }
@@ -44,7 +32,9 @@ const styles = StyleSheet.create({
   },
 })
 function mapStateToProps (state) {
-  return {deckList: state}
+  return {
+    deckList: state
+  }
 }
 export default connect(
   mapStateToProps

@@ -1,4 +1,4 @@
-import { RECEIVE_ENTRIES, ADD_ENTRY } from '../actions'
+import { ADD_DECK, ADD_CARD } from '../actions'
 
 const initialDeckList = {
   React: {

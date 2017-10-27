@@ -27,10 +27,10 @@ export default class DeckView extends Component {
             </Text>
           </View>
           <View>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('AddCardView')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('AddCardView', {deckName: params.deckName})}>
               <Text style={styles.buttonAdd}>Add Card</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('QuizView')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('QuizView', {deckName: params.deckName})}>
               <Text style={styles.buttonQuiz}>Start Quiz</Text>
             </TouchableOpacity>
           </View>

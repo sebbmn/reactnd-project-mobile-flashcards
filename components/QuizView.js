@@ -1,25 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default class QuizView extends Component {
+class QuizView extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Quiz',
+    title: 'Quiz '+navigation.state.params.deckName,
     headerStyle: {
       backgroundColor: '#000000'
     },
     headerTintColor: '#ffffff'
   })
   state= {
-    questions: [
-      {
-        question: 'What is React?',
-        answer: 'A library for managing user interfaces'
-      },
-      {
-        question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
-      }
-    ],
     index: 0,
     correctAnswers: 0,
     displayAnswer: false,
@@ -32,37 +23,42 @@ export default class QuizView extends Component {
     this.setState({displayAnswer: false}, () => {
       if(answer === 'correct') {
         this.setState({correctAnswers: this.state.correctAnswers+1}, () => {
-          if(this.state.index < this.state.questions.length-1) {
+          if(this.state.index < this.props.deckList[this.props.navigation.state.params.deckName].questions.length-1) {
             this.setState({index: this.state.index+1})
           } else {
-            this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.state.questions.length})
+            this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length})
           }
         })
       } else {
-        if(this.state.index < this.state.questions.length-1) {
+        if(this.state.index < this.props.deckList[this.props.navigation.state.params.deckName].questions.length-1) {
           this.setState({index: this.state.index+1})
         } else {
-          this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.state.questions.length})
+          this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length})
         }
       }
     })
   }
   render() {
+    const { params } = this.props.navigation.state
+    const { deckList } = this.props
+
+    questions = deckList[params.deckName].questions
+
     return (
       <View style={styles.container}>
-        <Text>{this.state.index+1}/{this.state.questions.length}</Text>
+        <Text>{this.state.index+1}/{questions.length}</Text>
         <TouchableOpacity onPress={this.setMode}>
           {this.state.displayAnswer ? (
               <View>
                 <Text style={styles.title}>
-                  {this.state.questions[this.state.index].answer}
+                  {questions[this.state.index].answer}
                 </Text>
                 <Text style={{color: 'red', alignSelf: 'center'}}>Question</Text>
               </View>
             ):(
               <View>
                 <Text style={styles.title}>
-                  {this.state.questions[this.state.index].question}
+                  {questions[this.state.index].question}
                 </Text>
                 <Text style={{color: 'red', alignSelf: 'center'}}>Answer</Text>
               </View>
@@ -122,3 +118,11 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
+function mapStateToProps (state) {
+  return {
+    deckList: state
+  }
+}
+export default connect(
+  mapStateToProps
+)(QuizView)
