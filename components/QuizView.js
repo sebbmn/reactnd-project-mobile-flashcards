@@ -14,7 +14,8 @@ class QuizView extends Component {
     index: 0,
     correctAnswers: 0,
     displayAnswer: false,
-    displayResult: false
+    displayResult: false,
+    isEmpty: true
   }
   setMode = () => {
     this.setState({displayAnswer:!this.state.displayAnswer})
@@ -42,37 +43,45 @@ class QuizView extends Component {
     const { params } = this.props.navigation.state
     const { deckList } = this.props
 
-    questions = deckList[params.deckName] && deckList[params.deckName].questions
+    let questions = deckList[params.deckName] && deckList[params.deckName].questions
+    let test = 'ss'
 
     return (
       <View style={styles.container}>
-        <Text>{this.state.index+1}/{questions && questions.length}</Text>
-        <TouchableOpacity onPress={this.setMode}>
-          {this.state.displayAnswer ? (
-              <View>
-                <Text style={styles.title}>
-                  {questions && questions[this.state.index].answer}
-                </Text>
-                <Text style={{color: 'red', alignSelf: 'center'}}>Question</Text>
-              </View>
-            ):(
-              <View>
-                <Text style={styles.title}>
-                  {questions[this.state.index] && questions[this.state.index].question}
-                </Text>
-                <Text style={{color: 'red', alignSelf: 'center'}}>Answer</Text>
-              </View>
-            )
-          }
-        </TouchableOpacity>
-        <View>
-          <TouchableOpacity onPress={() => this.validateQuestion('correct')}>
-            <Text style={styles.buttonCorrect}>Correct</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.validateQuestion('incorrect')}>
-            <Text style={styles.buttonIncorrect}>Incorrect</Text>
-          </TouchableOpacity>
-        </View>
+        {questions.length > 0 ? (
+          <View>
+            <Text>{this.state.index+1}/{questions && questions.length}</Text>
+            <TouchableOpacity onPress={this.setMode}>
+              {this.state.displayAnswer ? (
+                  <View>
+                    <Text style={styles.title}>
+                      {questions && questions[this.state.index].answer}
+                    </Text>
+                    <Text style={{color: 'red', alignSelf: 'center'}}>Question</Text>
+                  </View>
+                ):(
+                  <View>
+                    <Text style={styles.title}>
+                      {questions[this.state.index] && questions[this.state.index].question}
+                    </Text>
+                    <Text style={{color: 'red', alignSelf: 'center'}}>Answer</Text>
+                  </View>
+                )
+              }
+            </TouchableOpacity>
+            <View>
+              <TouchableOpacity onPress={() => this.validateQuestion('correct')}>
+                <Text style={styles.buttonCorrect}>Correct</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.validateQuestion('incorrect')}>
+                <Text style={styles.buttonIncorrect}>Incorrect</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          ) : (
+            <Text>Please add question to this deck</Text>
+          )
+        }
       </View>
     )
   }
