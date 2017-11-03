@@ -8,20 +8,27 @@ const deckListTest = {
   }
 }
 export function getDecks() {
-  return AsyncStorage.getItem('Test').then ((results) => {
-      console.log(results)
+  return AsyncStorage.getAllKeys((results) => {
+      JSON.parse(results)
     }
   )
   //return all of the decks along with their titles, questions, and answers.
 } 
 export function getDeck(id) {
-  //take in a single id argument and return the deck associated with that id. 
+  return AsyncStorage.getItem(id, (result) => {
+      //console.log(JSON.parse(result))
+      JSON.parse(result)
+    }
+  ) 
 }
-export function saveDeckTitle(title) {
-  //return AsyncStorage.setItem('Test', JSON.stringify(deckListTest))
-  return AsyncStorage.mergeItem('Test', JSON.stringify({test2:{title: 'test2',questions:[]}}))
+export function saveDeckTitle(deckName) {
+  //return AsyncStorage.setItem(deckName, JSON.stringify({title: deckName,questions:[]}))
+  return AsyncStorage.mergeItem(deckName, JSON.stringify({title: deckName,questions:[]}))
   //take in a single title argument and add it to the decks.
 } 
 export function addCardToDeck(title, card) {
 
+}
+export function clearAll() {
+  AsyncStorage.clear( (error)=>console.log(error))
 }

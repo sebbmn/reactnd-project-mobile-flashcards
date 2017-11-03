@@ -9,7 +9,6 @@ import AddDeckView from './components/AddDeckView'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import QuizResult from './components/QuizResult'
-import {saveDeckTitle, getDecks} from './utils/api'
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -51,7 +50,7 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: {
-    title: 'Mobile Flashcards',
+    title: 'Mobile Flaashcards',
     headerStyle: {
       backgroundColor: '#000000'
     },
@@ -60,10 +59,7 @@ const AppNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
-  
   render() {
-    saveDeckTitle('aaa')
-    getDecks('gg')
     return (
       <Provider store={createStore(reducer)}>
         <AppNavigator/>
@@ -71,4 +67,3 @@ export default class App extends React.Component {
     )
   }
 }
-
