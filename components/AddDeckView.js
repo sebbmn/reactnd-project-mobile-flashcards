@@ -10,8 +10,8 @@ class AddDeckView extends Component {
   submit = () => {
     if(this.state.deckTitle !== '') {
       this.props.addD(this.state.deckTitle)
+      this.props.navigation.navigate('DeckView', {deckName: this.state.deckTitle})
       this.setState({deckTitle:''})
-      this.props.navigation.navigate('Home')
     } else {
       alert('Your deck need a name')
     }

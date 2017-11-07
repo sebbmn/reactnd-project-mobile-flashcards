@@ -27,14 +27,22 @@ class QuizView extends Component {
           if(this.state.index < this.props.deckList[this.props.navigation.state.params.deckName].questions.length-1) {
             this.setState({index: this.state.index+1})
           } else {
-            this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length})
+            this.props.navigation.navigate('QuizResult',{
+              deckName: this.props.navigation.state.params.deckName,
+              correctAnswers:this.state.correctAnswers, 
+              questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length
+            })
           }
         })
       } else {
         if(this.state.index < this.props.deckList[this.props.navigation.state.params.deckName].questions.length-1) {
           this.setState({index: this.state.index+1})
         } else {
-          this.props.navigation.navigate('QuizResult',{correctAnswers:this.state.correctAnswers, questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length})
+          this.props.navigation.navigate('QuizResult',{
+            deckName: this.props.navigation.state.params.deckName,
+            correctAnswers:this.state.correctAnswers, 
+            questions:this.props.deckList[this.props.navigation.state.params.deckName].questions.length
+          })
         }
       }
     })

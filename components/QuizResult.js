@@ -17,10 +17,10 @@ export default class QuizResult extends Component {
           Results: {`${params.correctAnswers}/${params.questions}`}
         </Text>
         <View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('QuizView')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('QuizView', {deckName: params.deckName})}>
             <Text style={styles.buttonCorrect}>Retry?</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: params.deckName})}>
             <Text style={styles.buttonIncorrect}>Home</Text>
           </TouchableOpacity>
         </View>

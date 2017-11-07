@@ -17,7 +17,7 @@ class AddCardView extends Component {
   }
   submit = () => {
     this.props.addC({deckName:this.props.navigation.state.params.deckName, question:this.state.inputQuestion, answer:this.state.inputAnswer})
-    this.props.navigation.navigate('Home')
+    this.props.navigation.navigate('DeckView', {deckName: this.props.navigation.state.params.deckName})
   }
   render() {
     return (
