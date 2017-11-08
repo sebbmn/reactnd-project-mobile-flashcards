@@ -16,8 +16,8 @@ export function getDecks() {
 } 
 export function getDeck(id) {
   return AsyncStorage.getItem(id, (result) => {
-      //console.log(JSON.parse(result))
       JSON.parse(result)
+      //result
     }
   ) 
 }
@@ -26,8 +26,8 @@ export function saveDeckTitle(deckName) {
   return AsyncStorage.mergeItem(deckName, JSON.stringify({title: deckName,questions:[]}))
   //take in a single title argument and add it to the decks.
 } 
-export function addCardToDeck(title, card) {
-
+export function addCardToDeck(deckName, card) {
+  return AsyncStorage.mergeItem(deckName, JSON.stringify({questions:[card]}))
 }
 export function clearAll() {
   AsyncStorage.clear( (error)=>console.log(error))

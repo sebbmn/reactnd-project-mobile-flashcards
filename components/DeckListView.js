@@ -1,24 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addDeck } from '../actions'
+import { addDeck, addCard } from '../actions'
 import { Text, View, Button, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
-import {saveDeckTitle, getDecks, clearAll, getDeck} from '../utils/api'
+import {saveDeckTitle, getDecks, clearAll, getDeck, addCardToDeck} from '../utils/api'
 
 class DeckListView extends Component {
   componentDidMount = () => {
-    getDeck('Test').then((result) => {
-      //console.log(result.title)
-      //this.props.addD(result)
-    })
     getDecks().then( (results) => {
-      results.map( (result) => {
-        this.props.addD(result)
+
+      results.map( (deckName) => {
+        this.props.addD(deckName)
+
+        getDeck(deckName).then((deck) => {
+          JSON.parse(deck).questions.map ( (card) => {
+            this.props.addC({deckName: deckName ,question: card.question, answer: card.answer})
+          })
+        })
       })
     })
   }
   
   render() {
-
+    let card = {question: 'q1', answer: 'a1'}
+    //console.log(card)
+    //addCardToDeck('React', card)
     //saveDeckTitle('React')
     //saveDeckTitle('JavaScript')
     //saveDeckTitle('Test1')
@@ -62,7 +67,8 @@ function mapStateToProps (state) {
 }
 function mapDispatchToProps (dispatch) {
   return { 
-    addD: (data) => dispatch(addDeck(data))
+    addD: (data) => dispatch(addDeck(data)),
+    addC: (data) => dispatch(addCard(data))
   }
 }
 export default connect(
