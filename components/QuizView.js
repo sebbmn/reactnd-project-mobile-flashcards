@@ -65,14 +65,14 @@ class QuizView extends Component {
                     <Text style={styles.title}>
                       {questions && questions[this.state.index].answer}
                     </Text>
-                    <Text style={{color: 'red', alignSelf: 'center'}}>Question</Text>
+                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>To question</Text>
                   </View>
                 ):(
                   <View>
                     <Text style={styles.title}>
                       {questions[this.state.index] && questions[this.state.index].question}
                     </Text>
-                    <Text style={{color: 'red', alignSelf: 'center'}}>Answer</Text>
+                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>To answer</Text>
                   </View>
                 )
               }

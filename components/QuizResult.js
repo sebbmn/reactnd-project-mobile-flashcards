@@ -21,6 +21,9 @@ export default class QuizResult extends Component {
             <Text style={styles.buttonCorrect}>Retry?</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: params.deckName})}>
+            <Text style={styles.buttonIncorrect}>Back to deck</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
             <Text style={styles.buttonIncorrect}>Home</Text>
           </TouchableOpacity>
         </View>
