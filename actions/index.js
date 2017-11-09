@@ -20,6 +20,19 @@ export function addDeckToStorage(deckName) {
   return (dispatch) => {
     saveDeckTitle(deckName)
           .then(() => dispatch(addDeck(deckName)))
-          .catch(() => dispatch())
+          .catch(() => {
+            alert('Something went wrong, please try again')
+            dispatch()
+          })      
+  }
+}
+export function addCardToStorage(card) {
+  return (dispatch) => {
+    addCardToDeck(card.deckName, {question: card.question, answer: card.answer})
+          .then(() => dispatch(addCard(card)))
+          .catch(() => {
+            alert('Something went wrong, please try again')
+            dispatch()
+          })      
   }
 }

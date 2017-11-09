@@ -44,7 +44,6 @@ class DeckListView extends Component {
   componentDidMount = () => {
     populate().then(() => {
       getDecks().then( (results) => {
-        console.log(results)
         results.map( (deckName) => {
           this.props.addD(deckName)
           getDeck(deckName).then((deck) => {

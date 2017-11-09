@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addCard } from '../actions'
+import { addCardToStorage } from '../actions'
 import { Text, View, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 
 class AddCardView extends Component {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
 })
 function mapDispatchToProps (dispatch) {
   return { 
-    addC: (data) => dispatch(addCard(data))
+    addC: (data) => dispatch(addCardToStorage(data))
   }
 }
 export default connect(
