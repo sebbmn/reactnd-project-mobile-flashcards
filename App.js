@@ -9,6 +9,7 @@ import AddDeckView from './components/AddDeckView'
 import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import QuizResult from './components/QuizResult'
+import configureStore from './store/configureStore';
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -58,10 +59,12 @@ const AppNavigator = StackNavigator({
   }
 })
 
+const store = configureStore()
+
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={store}>
         <AppNavigator/>
       </Provider>
     )

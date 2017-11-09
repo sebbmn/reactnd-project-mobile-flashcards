@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addDeck } from '../actions'
+import { addDeckToStorage } from '../actions'
 import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 
 class AddDeckView extends Component {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 })
 function mapDispatchToProps (dispatch) {
   return { 
-    addD: (data) => dispatch(addDeck(data))
+    addD: (data) => dispatch(addDeckToStorage(data))
   }
 }
 export default connect(
