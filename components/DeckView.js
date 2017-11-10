@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
 import { TabNavigator } from 'react-navigation'
 import QuizView from './QuizView'
 import AddCardView from './AddCardView'
 
-export default class DeckView extends Component {
+class DeckView extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.state.params.deckName,
     headerStyle: {
@@ -14,16 +15,14 @@ export default class DeckView extends Component {
   })
 
   render() {
+    const {deckList} = this.props
     const { params } = this.props.navigation.state
 
     return (
       <View style={styles.container}>
           <View>     
             <Text style={styles.title}>
-              {params.deckName} cards
-            </Text>
-            <Text style={styles.number}>
-              {params.deckId}
+              {params.deckName} | {deckList[params.deckName].questions.length} cards
             </Text>
           </View>
           <View>
@@ -73,3 +72,11 @@ const styles = StyleSheet.create({
     margin: 5
   }
 })
+function mapStateToProps (state) {
+  return {
+    deckList: state
+  }
+}
+export default connect(
+  mapStateToProps,
+)(DeckView)
