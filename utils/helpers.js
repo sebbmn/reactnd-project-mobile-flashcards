@@ -2,13 +2,8 @@ import React from 'react'
 import { Notifications, Permissions } from 'expo'
 import { AsyncStorage } from 'react-native'
 
-const NOTIFICATION_KEY = 'UdaciFitness:notifications'
+const NOTIFICATION_KEY = 'MobileFlashCards:notifications'
 
-export function getDailyReminderValue () {
-  return {
-    today: "👋 Don't forget to try a quiz today!"
-  }
-}
 export function timeToString (time = Date.now()) {
   const date = new Date(time)
   const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
@@ -21,8 +16,8 @@ export function clearLocalNotification () {
 }
 function createNotification () {
   return {
-    title: 'Log your stats!',
-    body: "👋 don't forget to log your stats for today!",
+    title: 'Try a quiz!',
+    body: "👋 Don't forget to try a quiz today!",
     ios: {
       sound: true,
     },
@@ -38,16 +33,20 @@ export function setLocalNotification () {
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
     .then((data) => {
+      console.log('hey'+data)
       if (data === null) {
+        console.log('hey'+data)
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
+            console.log('hey')
             if (status === 'granted') {
+              console.log('hey')
               Notifications.cancelAllScheduledNotificationsAsync()
 
               let tomorrow = new Date()
-              tomorrow.setDate(tomorrow.getDate() + 1)
-              tomorrow.setHours(21)
-              tomorrow.setMinutes(10)
+              tomorrow.setDate(tomorrow.getDate())
+              tomorrow.setHours(22)
+              tomorrow.setMinutes(14)
 
               Notifications.scheduleLocalNotificationAsync(
                 createNotification(),

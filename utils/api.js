@@ -1,12 +1,5 @@
 import { AsyncStorage } from 'react-native'
 
-const deckListTest = {
-  test:
-  {
-    title: 'test',
-    questions: []
-  }
-}
 export function getDecks() {
   return AsyncStorage.getAllKeys((results) => {
       JSON.parse(results)
@@ -17,7 +10,6 @@ export function getDecks() {
 export function getDeck(id) {
   return AsyncStorage.getItem(id, (result) => {
       JSON.parse(result)
-      //result
     }
   ) 
 }

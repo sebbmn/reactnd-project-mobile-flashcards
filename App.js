@@ -11,6 +11,7 @@ import QuizView from './components/QuizView'
 import QuizResult from './components/QuizResult'
 import configureStore from './store/configureStore';
 import { setLocalNotification } from './utils/helpers'
+import {clearAll} from './utils/api'
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -64,6 +65,7 @@ const store = configureStore()
 
 export default class App extends React.Component {
   componentDidMount() {
+    clearAll()
     setLocalNotification()
   }
   render() {

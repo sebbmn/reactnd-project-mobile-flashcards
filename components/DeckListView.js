@@ -29,7 +29,7 @@ function populate() {
       ]
     }
   }
-  clearAll()
+  //clearAll()
   saveDeckTitle('React')
   /**saveDeckTitle('JavaScript')
 
@@ -42,18 +42,24 @@ function populate() {
 
 class DeckListView extends Component {
   componentDidMount = () => {
-     //populate().then(() => {
+     populate().then(() => {
       getDecks().then( (results) => {
+        //console.log(results)
         results.map( (deckName) => {
-          this.props.addD(deckName)
-          getDeck(deckName).then((deck) => {
-            JSON.parse(deck).questions.map ( (card) => {
-              this.props.addC({deckName: deckName ,question: card.question, answer: card.answer})
+          if(deckName !== 'MobileFlashCards:notifications') {
+            this.props.addD(deckName)
+            getDeck(deckName).then((deck) => {
+              JSON.parse(deck).questions.map ( (card) => {
+                this.props.addC({deckName: deckName ,question: card.question, answer: card.answer})
+              })
+          })} else {
+            getDeck(deckName).then((deck) => {
+              //console.log(deck)
             })
-          })
+          }
         })
       })
-    //})
+    })
   }
   render() {
     const {deckList} = this.props
