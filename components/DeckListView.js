@@ -31,7 +31,7 @@ function populate() {
   }
   //clearAll()
   saveDeckTitle('React')
-  /**saveDeckTitle('JavaScript')
+  /**saveDeckTitle('JavaScript') 
 
   addCardToDeck('JavaScript', initialDeckList.JavaScript.questions[0])
   **/
@@ -42,7 +42,7 @@ function populate() {
 
 class DeckListView extends Component {
   componentDidMount = () => {
-     populate().then(() => {
+     //populate().then(() => {
       getDecks().then( (results) => {
         //console.log(results)
         results.map( (deckName) => {
@@ -59,7 +59,7 @@ class DeckListView extends Component {
           }
         })
       })
-    })
+    //})
   }
   render() {
     const {deckList} = this.props
@@ -72,7 +72,7 @@ class DeckListView extends Component {
         keyExtractor={item => item.title}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
-            <Text style={styles.button}>{item.title} x cards</Text>
+            <Text style={styles.button}>{item.title} {deckList[item.title].questions.length} cards</Text>
           </TouchableOpacity>
         )}
       />
