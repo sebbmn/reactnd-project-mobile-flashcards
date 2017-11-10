@@ -10,6 +10,7 @@ import DeckView from './components/DeckView'
 import QuizView from './components/QuizView'
 import QuizResult from './components/QuizResult'
 import configureStore from './store/configureStore';
+import { setLocalNotification } from './utils/helpers'
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -62,6 +63,9 @@ const AppNavigator = StackNavigator({
 const store = configureStore()
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={store}>

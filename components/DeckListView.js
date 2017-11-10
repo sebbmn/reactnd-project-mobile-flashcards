@@ -29,8 +29,8 @@ function populate() {
       ]
     }
   }
-  //clearAll()
-  //saveDeckTitle('React')
+  clearAll()
+  saveDeckTitle('React')
   /**saveDeckTitle('JavaScript')
 
   addCardToDeck('JavaScript', initialDeckList.JavaScript.questions[0])
@@ -42,7 +42,7 @@ function populate() {
 
 class DeckListView extends Component {
   componentDidMount = () => {
-    populate().then(() => {
+     //populate().then(() => {
       getDecks().then( (results) => {
         results.map( (deckName) => {
           this.props.addD(deckName)
@@ -53,7 +53,7 @@ class DeckListView extends Component {
           })
         })
       })
-    })
+    //})
   }
   render() {
     const {deckList} = this.props
