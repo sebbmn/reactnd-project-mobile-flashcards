@@ -9,9 +9,13 @@ class AddDeckView extends Component {
   }
   submit = () => {
     if(this.state.deckTitle !== '') {
-      this.props.addD(this.state.deckTitle)
-      this.props.navigation.navigate('DeckView', {deckName: this.state.deckTitle})
-      this.setState({deckTitle:''})
+      if(this.props.deckList[this.state.deckTitle]) {
+        alert('This deck name already exist, please choose another name for your deck')
+      } else {
+        this.props.addD(this.state.deckTitle)
+        this.props.navigation.navigate('DeckView', {deckName: this.state.deckTitle})
+        this.setState({deckTitle:''})
+      }
     } else {
       alert('Your deck need a name')
     }
@@ -36,13 +40,18 @@ class AddDeckView extends Component {
     )
   }
 }
+function mapStateToProps (state) {
+  return {
+    deckList: state
+  }
+}
 function mapDispatchToProps (dispatch) {
   return { 
     addD: (data) => dispatch(addDeckToStorage(data))
   }
 }
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddDeckView)
 
