@@ -1,17 +1,15 @@
 import React from 'react'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import DeckListView from './components/DeckListView'
+import { setLocalNotification } from './utils/helpers'
+import { clearAll } from './utils/api'
 import AddCardView from './components/AddCardView'
 import AddDeckView from './components/AddDeckView'
+import DeckListView from './components/DeckListView'
 import DeckView from './components/DeckView'
-import QuizView from './components/QuizView'
 import QuizResult from './components/QuizResult'
+import QuizView from './components/QuizView'
 import configureStore from './store/configureStore';
-import { setLocalNotification } from './utils/helpers'
-import {clearAll} from './utils/api'
 
 const MainTabNavigator = TabNavigator({
   Home: {
@@ -53,7 +51,7 @@ const AppNavigator = StackNavigator({
 },
 {
   navigationOptions: {
-    title: 'Mobile Flaashcards',
+    title: 'Mobile Flashcards',
     headerStyle: {
       backgroundColor: '#000000'
     },

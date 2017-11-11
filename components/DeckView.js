@@ -19,11 +19,11 @@ class DeckView extends Component {
       <View style={styles.container}>
           <View>     
             <Text style={styles.title}>
-              {deckList[params.deckName].questions.length > 1 ? 
+              {deckList[params.deckName] && (deckList[params.deckName].questions.length > 1 ? 
                 `${deckList[params.deckName].questions.length} cards in ${params.deckName}`
               :
                 `${deckList[params.deckName].questions.length} card in ${params.deckName}`
-              }
+              )}
             </Text>
           </View>
           <View>

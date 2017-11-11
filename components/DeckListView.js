@@ -33,7 +33,7 @@ function populate() {
   saveDeckTitle('React')
   /**saveDeckTitle('JavaScript') 
 
-  addCardToDeck('JavaScript', initialDeckList.JavaScript.questions[0])
+  addCardToDeck('JavaScript', initialDeckList.JavaScript.questions[0])   
   **/
   return addCardToDeck('React', initialDeckList.React.questions[0]).then(() => {
     addCardToDeck('React', initialDeckList.React.questions[1])
@@ -42,6 +42,7 @@ function populate() {
 
 class DeckListView extends Component {
   componentDidMount = () => {
+    //clearAll()
      //populate().then(() => {
       getDecks().then( (results) => {
         results.map( (deckName) => {
