@@ -52,7 +52,6 @@ class QuizView extends Component {
     const { deckList } = this.props
 
     let questions = deckList[params.deckName] && deckList[params.deckName].questions
-    let test = 'ss'
 
     return (
       <View style={styles.container}>
@@ -63,16 +62,16 @@ class QuizView extends Component {
               {this.state.displayAnswer ? (
                   <View>
                     <Text style={styles.title}>
-                      {questions && questions[this.state.index].answer}
+                      {questions[this.state.index] && questions[this.state.index].answer}
                     </Text>
-                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>To question</Text>
+                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>Back to question</Text>
                   </View>
                 ):(
                   <View>
                     <Text style={styles.title}>
                       {questions[this.state.index] && questions[this.state.index].question}
                     </Text>
-                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>To answer</Text>
+                    <Text style={{color: 'red', alignSelf: 'center', padding:5}}>Show answer</Text>
                   </View>
                 )
               }
@@ -87,13 +86,22 @@ class QuizView extends Component {
             </View>
           </View>
           ) : (
-            <Text>Please add question to this deck</Text>
+            <Text style={styles.title}>Please add question to this deck</Text>
           )
         }
       </View>
     )
   }
 }
+function mapStateToProps (state) {
+  return {
+    deckList: state
+  }
+}
+export default connect(
+  mapStateToProps
+)(QuizView)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -135,11 +143,3 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
-function mapStateToProps (state) {
-  return {
-    deckList: state
-  }
-}
-export default connect(
-  mapStateToProps
-)(QuizView)

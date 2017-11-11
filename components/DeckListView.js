@@ -44,7 +44,6 @@ class DeckListView extends Component {
   componentDidMount = () => {
      //populate().then(() => {
       getDecks().then( (results) => {
-        //console.log(results)
         results.map( (deckName) => {
           if(deckName !== 'MobileFlashCards:notifications') {
             this.props.addD(deckName)
@@ -54,7 +53,6 @@ class DeckListView extends Component {
               })
           })} else {
             getDeck(deckName).then((deck) => {
-              //console.log(deck)
             })
           }
         })
@@ -62,34 +60,30 @@ class DeckListView extends Component {
     //})
   }
   render() {
-    const {deckList} = this.props
+    const { deckList } = this.props
     let decks = Object.keys(deckList).map(e=>({title: e}))
 
     return (
       <View>
         <FlatList
-        data={decks}
-        keyExtractor={item => item.title}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
-            <Text style={styles.button}>{item.title} {deckList[item.title].questions.length} cards</Text>
-          </TouchableOpacity>
-        )}
-      />
+          data={decks}
+          keyExtractor={item => item.title}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
+              <Text style={styles.button}>{item.title} 
+              {deckList[item.title].questions.length > 1 ? 
+                  ` ${deckList[item.title].questions.length} cards`
+                :
+                  ` ${deckList[item.title].questions.length} card`
+                }
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     )
   }
 }
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#666666',
-    color: '#ffffff',
-    textAlign: 'center',
-    borderRadius: 5,
-    padding: 10,
-    margin: 10
-  },
-})
 function mapStateToProps (state) {
   return {
     deckList: state
@@ -105,3 +99,15 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(DeckListView)
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#444444',
+    color: '#ffffff',
+    textAlign: 'center',
+    fontSize: 20,
+    borderRadius: 5,
+    padding: 10,
+    margin: 10
+  },
+})

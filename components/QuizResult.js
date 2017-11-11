@@ -11,6 +11,7 @@ export default class QuizResult extends Component {
   })
   render() {
     const { params } = this.props.navigation.state
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -24,7 +25,7 @@ export default class QuizResult extends Component {
             <Text style={styles.buttonIncorrect}>Back to deck</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
-            <Text style={styles.buttonIncorrect}>Home</Text>
+            <Text style={styles.buttonHome}>Home</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -61,6 +62,18 @@ const styles = StyleSheet.create({
   },
   buttonIncorrect: {
     backgroundColor: '#000000',
+    color: '#ffffff',
+    alignSelf:'center',
+    width: 200,
+    height: 50,
+    borderRadius: 5,
+    fontSize: 16,
+    textAlign: 'center',
+    padding: 12,
+    margin: 5
+  },
+  buttonHome: {
+    backgroundColor: '#005500',
     color: '#ffffff',
     alignSelf:'center',
     width: 200,

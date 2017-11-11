@@ -15,7 +15,6 @@ class AddDeckView extends Component {
     } else {
       alert('Your deck need a name')
     }
-
   }
   render() {
     return (
@@ -37,6 +36,16 @@ class AddDeckView extends Component {
     )
   }
 }
+function mapDispatchToProps (dispatch) {
+  return { 
+    addD: (data) => dispatch(addDeckToStorage(data))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddDeckView)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -66,12 +75,3 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
-function mapDispatchToProps (dispatch) {
-  return { 
-    addD: (data) => dispatch(addDeckToStorage(data))
-  }
-}
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddDeckView)

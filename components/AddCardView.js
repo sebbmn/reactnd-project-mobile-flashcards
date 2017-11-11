@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCardToStorage } from '../actions'
-import { Text, View, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 
 class AddCardView extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -16,10 +16,17 @@ class AddCardView extends Component {
     inputAnswer: ''
   }
   submit = () => {
-    this.props.addC({deckName:this.props.navigation.state.params.deckName, question:this.state.inputQuestion, answer:this.state.inputAnswer})
-    this.props.navigation.navigate('DeckView', {deckName: this.props.navigation.state.params.deckName})
+    if(this.state.inputQuestion === ''){
+      alert('Your card need a question')
+    } else if (this.state.inputAnswer === '') {
+      alert('Your card need an answer')
+    } else {
+      this.props.addC({deckName:this.props.navigation.state.params.deckName, question:this.state.inputQuestion, answer:this.state.inputAnswer})
+      this.props.navigation.navigate('DeckView', {deckName: this.props.navigation.state.params.deckName})
+    }
   }
   render() {
+
     return (
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
         <Text style={styles.title}>
@@ -47,6 +54,16 @@ class AddCardView extends Component {
     )
   }
 }
+function mapDispatchToProps (dispatch) {
+  return { 
+    addC: (data) => dispatch(addCardToStorage(data))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddCardView)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -76,12 +93,3 @@ const styles = StyleSheet.create({
     margin: 5
   },
 })
-function mapDispatchToProps (dispatch) {
-  return { 
-    addC: (data) => dispatch(addCardToStorage(data))
-  }
-}
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddCardView)

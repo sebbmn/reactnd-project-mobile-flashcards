@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { TabNavigator } from 'react-navigation'
-import QuizView from './QuizView'
-import AddCardView from './AddCardView'
 
 class DeckView extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -13,16 +11,19 @@ class DeckView extends Component {
     },
     headerTintColor: '#ffffff'
   })
-
   render() {
-    const {deckList} = this.props
+    const { deckList } = this.props
     const { params } = this.props.navigation.state
 
     return (
       <View style={styles.container}>
           <View>     
             <Text style={styles.title}>
-              {params.deckName} | {deckList[params.deckName].questions.length} cards
+              {deckList[params.deckName].questions.length > 1 ? 
+                `${deckList[params.deckName].questions.length} cards in ${params.deckName}`
+              :
+                `${deckList[params.deckName].questions.length} card in ${params.deckName}`
+              }
             </Text>
           </View>
           <View>
@@ -37,6 +38,15 @@ class DeckView extends Component {
     )
   }
 }
+function mapStateToProps (state) {
+  return {
+    deckList: state
+  }
+}
+export default connect(
+  mapStateToProps,
+)(DeckView)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -72,11 +82,3 @@ const styles = StyleSheet.create({
     margin: 5
   }
 })
-function mapStateToProps (state) {
-  return {
-    deckList: state
-  }
-}
-export default connect(
-  mapStateToProps,
-)(DeckView)
