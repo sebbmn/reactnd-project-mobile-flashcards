@@ -11,18 +11,20 @@ This was develloped as the third project for the Udacity's React Nanodegree.
 
 ### Virtual device
 
-The virtual device used for the devellopement is a avd Nexus_5_API_23_x86 and was [created with Android Studio](https://developer.android.com/studio/run/managing-avds.html).
+The virtual device used for the devellopement is an avd Nexus_5_API_23_x86 and was [created with Android Studio](https://developer.android.com/studio/run/managing-avds.html).
 
 
 ## Run
 
+### Launch the Virtual device
+
+Script: `%LOCALAPPDATA%\Android\sdk\emulator\emulator.exe -avd Nexus_5_API_23_x86`
+
+### Start the app
+
 1. cd into folder
 2. run: `npm run start`
-
-Device
-
-This code was tested on a virtual device:
-avd Nexus_5_API_23_x86
+3. Select the 'a' option: open Android device or emulator.
 
 ## Dependencies
 
