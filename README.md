@@ -1,6 +1,6 @@
 # Mobile Flashcards
 
-This app is built with React, Redux and React Router. This project was bootstrapped with [create-react-native-app](https://github.com/react-community/create-react-native-app).
+This app is built with React-Native, Redux and React Navigation. This project was bootstrapped with [create-react-native-app](https://github.com/react-community/create-react-native-app).
 This was develloped as the third project for the Udacity's React Nanodegree.
 
 ## Install
@@ -10,6 +10,8 @@ This was develloped as the third project for the Udacity's React Nanodegree.
 3. Install libraries: `npm install`
 
 ### Virtual device
+
+The virtual device used for the devellopement is a avd Nexus_5_API_23_x86 and was [created with Android Studio](https://developer.android.com/studio/run/managing-avds.html).
 
 
 ## Run
