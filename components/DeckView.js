@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native'
 import { TabNavigator } from 'react-navigation'
+import { Ionicons } from '@expo/vector-icons'
 
 class DeckView extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -9,7 +10,8 @@ class DeckView extends Component {
     headerStyle: {
       backgroundColor: '#000000'
     },
-    headerTintColor: '#ffffff'
+    headerTintColor: '#ffffff',
+    headerLeft: <Button title='Home' color={'#000000'} onPress={() => navigation.navigate('Home')}/>
   })
   render() {
     const { deckList } = this.props
