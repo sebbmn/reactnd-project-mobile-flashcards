@@ -31,10 +31,10 @@ Script: `%LOCALAPPDATA%\Android\sdk\emulator\emulator.exe -avd Nexus_5_API_23_x8
 
 ## Dependencies
 
-- [expo]()
+- [expo](https://expo.io/): tool to build React Native apps.
 - [react](https://github.com/facebook/react): React is a JavaScript library for building user interfaces.
-- [react-native]()
-- [react-navigation]()
+- [react-native](https://facebook.github.io/react-native/): Framework to build native mobile apps using Javascript and React.js.
+- [react-navigation](https://reactnavigation.org/): Simple easy to use navigator for React Native.
 - [react-redux](https://github.com/reactjs/react-redux): Official React bindings for Redux.
 - [redux](https://github.com/reactjs/redux): Predictable state container for JavaScript apps.
 - [redux-thunk](https://github.com/gaearon/redux-thunk): [Middleware](https://redux.js.org/docs/advanced/Middleware.html) for redux.
