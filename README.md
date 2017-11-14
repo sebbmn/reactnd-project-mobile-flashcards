@@ -11,6 +11,9 @@ This was develloped as the third project for the Udacity's React Nanodegree.
 
 ### Virtual device
 
+Android version: 6.0
+Kernel version: 3.10.0
+
 The virtual device used for the devellopement is an avd Nexus_5_API_23_x86 and was [created with Android Studio](https://developer.android.com/studio/run/managing-avds.html).
 
 
@@ -28,11 +31,11 @@ Script: `%LOCALAPPDATA%\Android\sdk\emulator\emulator.exe -avd Nexus_5_API_23_x8
 
 ## Dependencies
 
-- expo
+- [expo]()
 - [react](https://github.com/facebook/react): React is a JavaScript library for building user interfaces.
-- react-native
-- react-navigation
+- [react-native]()
+- [react-navigation]()
 - [react-redux](https://github.com/reactjs/react-redux): Official React bindings for Redux.
 - [redux](https://github.com/reactjs/redux): Predictable state container for JavaScript apps.
-- redux-thunk
+- [redux-thunk](https://github.com/gaearon/redux-thunk): [Middleware](https://redux.js.org/docs/advanced/Middleware.html) for redux.
 
