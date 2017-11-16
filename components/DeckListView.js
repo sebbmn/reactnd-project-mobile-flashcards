@@ -6,7 +6,6 @@ import {saveDeckTitle, getDecks, clearAll, getDeck, addCardToDeck} from '../util
 
 class DeckListView extends Component {
   componentDidMount = () => {
-    //clearAll()
     getDecks().then( (results) => {
       results.map( (deckName) => {
         if(deckName !== 'MobileFlashCards:notifications') {

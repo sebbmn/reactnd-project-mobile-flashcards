@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { clearLocalNotification } from '../utils//helpers'
 
 export default class QuizResult extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -9,6 +10,9 @@ export default class QuizResult extends Component {
     },
     headerTintColor: '#ffffff'
   })
+  componentDidMount = () => {
+    clearLocalNotification()
+  }
   render() {
     const { params } = this.props.navigation.state
 
