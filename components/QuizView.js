@@ -55,19 +55,19 @@ class QuizView extends Component {
 
     return (
       <View style={styles.container}>
+        <Text>{this.state.index+1}/{questions && questions.length}</Text>
         {questions.length > 0 ? (
           <View>
-            <Text>{this.state.index+1}/{questions && questions.length}</Text>
             <TouchableOpacity onPress={this.setMode}>
               {this.state.displayAnswer ? (
-                  <View>
+                  <View style={{marginBottom: 80}}>
                     <Text style={styles.title}>
                       {questions[this.state.index] && questions[this.state.index].answer}
                     </Text>
                     <Text style={{color: 'red', alignSelf: 'center', padding:5}}>Back to question</Text>
                   </View>
                 ):(
-                  <View>
+                  <View style={{marginBottom: 80}}>
                     <Text style={styles.title}>
                       {questions[this.state.index] && questions[this.state.index].question}
                     </Text>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-around',
-    margin: 30,
+    margin: 10,
   },
   title: {
     fontSize: 35,
