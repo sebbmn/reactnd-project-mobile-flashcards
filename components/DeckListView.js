@@ -70,14 +70,15 @@ class DeckListView extends Component {
           data={decks}
           keyExtractor={item => item.title}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
-              <Text style={styles.button}>{item.title} 
-              {deckList[item.title].questions.length > 1 ? 
-                  ` ${deckList[item.title].questions.length} cards`
-                :
-                  ` ${deckList[item.title].questions.length} card`
-                }
-              </Text>
+            <TouchableOpacity style={styles.deck} onPress={() => this.props.navigation.navigate('DeckView', {deckName: item.title})}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.cards}>
+                  {deckList[item.title].questions.length > 1 ? 
+                      ` ${deckList[item.title].questions.length} cards`
+                    :
+                      ` ${deckList[item.title].questions.length} card`
+                    }
+                </Text>
             </TouchableOpacity>
           )}
         />
@@ -102,13 +103,27 @@ export default connect(
 )(DeckListView)
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#444444',
-    color: '#ffffff',
+  title: {
+    color: '#000000',
+    textAlign: 'center',
+    fontSize: 30,
+    padding: 2,
+    margin: 1
+  },
+  cards: {
+    color: '#666666',
     textAlign: 'center',
     fontSize: 20,
-    borderRadius: 5,
-    padding: 10,
-    margin: 10
+    paddingBottom: 5,
+    margin: 1
+  },
+  deck: {
+    backgroundColor: '#eeeeee',
+    flex: 1,
+    justifyContent: 'space-around',
+    margin: 2,
+    padding: 4,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#aaaaaa',
   },
 })
