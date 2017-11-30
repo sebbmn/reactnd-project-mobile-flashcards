@@ -14,12 +14,12 @@ class DeckListView extends Component {
             JSON.parse(deck).questions.map ( (card) => {
               this.props.addC({deckName: deckName ,question: card.question, answer: card.answer})
             })
-        })} else {
+        }).catch(e => console.log(e))} else {
           getDeck(deckName).then((deck) => {
-          })
+          }).catch(e => console.log(e))
         }
       })
-    })
+    }).catch(e => console.log(e))
   }
   render() {
     const { deckList } = this.props
