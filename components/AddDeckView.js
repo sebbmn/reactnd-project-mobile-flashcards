@@ -40,10 +40,8 @@ class AddDeckView extends Component {
     )
   }
 }
-function mapStateToProps (state) {
-  return {
-    deckList: state
-  }
+function mapStateToProps (deckList) {
+  return { deckList }
 }
 function mapDispatchToProps (dispatch) {
   return { 
