@@ -1,4 +1,4 @@
-import { ADD_DECK, ADD_CARD } from '../actions'
+import { ADD_DECK, ADD_CARD } from '../actions/types'
 
 function deckList (state = {}, action) {
   switch (action.type) {

@@ -1,7 +1,5 @@
 import {saveDeckTitle, getDecks, clearAll, getDeck, addCardToDeck} from '../utils/api'
-
-export const ADD_DECK = 'ADD_DECK'
-export const ADD_CARD = 'ADD_CARD'
+import { ADD_DECK, ADD_CARD } from '../actions/types'
 
 export function addDeck (deck) {
   return {
