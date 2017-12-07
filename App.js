@@ -10,25 +10,9 @@ import DeckView from './components/DeckView'
 import QuizResult from './components/QuizResult'
 import QuizView from './components/QuizView'
 import configureStore from './store/configureStore';
+import MainTabNavigator from './components/MainTabNavigator'
 
-const MainTabNavigator = TabNavigator({
-  Home: {
-    screen: DeckListView,
-  },
-  NewDeck: { 
-    screen: AddDeckView,
-  },
-},
-{
-  tabBarPosition: 'bottom',
-  tabBarOptions: {
-    activeTintColor: '#000000',
-    inactiveTintColor: '#444444',
-    style: {
-      backgroundColor: '#ffffff',
-    }
-  }
-})
+
 const AppNavigator = StackNavigator({
   Home: { 
     screen: MainTabNavigator,
