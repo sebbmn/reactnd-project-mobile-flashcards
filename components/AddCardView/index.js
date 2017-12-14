@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addCardToStorage } from '../actions'
-import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { addCardToStorage } from '../../actions'
+import { Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native'
+import styles from './styles'
 
 class AddCardView extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -64,32 +65,3 @@ export default connect(
   mapDispatchToProps
 )(AddCardView)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    margin: 30,
-  },
-  title: {
-    fontSize: 25,
-    textAlign: 'center'
-  },
-  textinput: {
-    borderWidth: 1,
-    borderColor: '#000000',
-    borderRadius: 5,
-    padding: 5,
-  },
-  buttonSubmit: {
-    backgroundColor: '#000000',
-    color: '#ffffff',
-    alignSelf:'center',
-    width: 150,
-    height: 50,
-    borderRadius: 5,
-    fontSize: 20,
-    textAlign: 'center',
-    padding: 10,
-    margin: 5
-  },
-})
